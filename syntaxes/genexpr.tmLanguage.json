@@ -1,0 +1,148 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "GenExpr",
+	"foldingStartMarker":"(?x)\n\t\t \/\\*\\*(?!\\*)\n\t\t|^(?![^{]*?\/\/|[^{]*?\/\\*(?!.*?\\*\/.*?\\{)).*?\\{\\s*($|\/\/|\/\\*(?!.*?\\*\/.*\\S))\\b\n\t",
+	"foldingStopMarker":"(?<!\\*)\\*\\*\/|^\\s*\\}\\b",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#command attributes"
+		},
+		{
+			"include": "#Gen Parameter Keywords"
+		},
+		{
+			"include": "#Gen Buffer Operators"
+		},
+		{
+			"include": "#Gen Convert Operators"
+		},
+		{
+			"include": "#Gen Constants"
+		},
+		{
+			"include": "#inlets function parameter"
+		},
+		{
+			"include": "#inlets"
+		},
+		{
+			"include": "#outlets"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#digits"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include" : "#words"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control",
+				"match": "\\b(function|if|while|for|return)\\b"
+			}]
+		},
+		"functions": {
+			"patterns": [{
+				"name": "entity.name.function",
+				"match": "(?<![History|Param]\\s)\\b(\\w+)(?=\\s*\\()"
+			}]
+		},
+		"command attributes": {
+			"patterns": [{
+				"name": "support.class.genexpr",
+				"match": "\\b(min|max)\\b(?=[^()]*\\))"
+			}]
+		},
+		"words": {
+			"patterns": [{
+				"name": "variable",
+				"match": "\\w+"
+			}]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment",
+				"match": "\\/\\/.*|\/\\*[\\s\\S]*?\\*\/"
+			}]
+		},
+		"digits": {
+			"patterns": [{
+				"name": "constant.numeric",
+				"match": "(?:(?<!\\d)[\\+\\-\\*\\/\\(\\,])?\\d+(?:\\.\\d+)?"
+			}]
+		},
+		"Gen Parameter Keywords": {
+			"patterns": [{
+				"name": "storage.type",
+				"match": "^\\b(History|Buffer|Data|Param)\\b"
+			}]
+		},
+		"Gen Buffer Operators": {
+			"patterns": [{
+				"name": "keyword.operator",
+				"match": "\\b(channels|cycle|data|dim|lookup|nearest|peek|poke|sample|splat|wave)\\b"
+			}]
+		},
+		"Gen Convert Operators": {
+			"patterns": [{
+				"name": "keyword.operator",
+				"match": "\\b(atodb|dbtoa|ftom|mstosamps|mtof|sampstoms)\\b"
+			}]
+		},
+		"Gen Comparison Operators": {
+			"patterns": [{
+				"name": "keyword.operator",
+				"match": "\\b(max|maximum|min|minimum)\\b"
+			}]
+		},
+		"Gen Constants": {
+			"patterns": [{
+				"name": "constant.language",
+				"match": "\\b(fftfullspect|FFTFULLSPECT|ffthop|FFTHOP|ftoffset|FFTOFFSET|fftsize|FFTSIZE|samplerate|SAMPLERATE|vectorsize|VECTORSIZE|degtorad|DEGTORAD|e|E|halfpi|HALFPI|invpi|INVPI|ln10|LN10|ln2|LN2|log10e|LOG10E|log2e|LOG2E|phi|PHI|pi|PI|radtodeg|RADTODEG|sqrt1_2|SQRT1_2|sqrt|SQRT|twopi|TWOPI)\\b"
+			}]
+		},
+		"inlets function parameter": {
+			"patterns": [{
+				"name": "storage.type",
+				"match": "\\b(in1|in2)\\b(?=[\\s,=\\)$])"
+			}]
+		},
+		"inlets": {
+			"patterns": [{
+				"name": "storage.type",
+				"match": "\\b(in1|in2|in3|in4|in5|in6|in7|in8|in9|in10|in11|in12|in14|in14|in15|in16)\\b"
+			}]
+		},
+		"outlets": {
+			"patterns": [{
+				"name": "storage.type",
+				"match": "\\b(out1|out2|out3|out4|out5|out6|out7|out8|out9|out10|out11|out12|out13|out14|out15|out16)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.genexpr",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.genexpr",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.genexpr"
+}

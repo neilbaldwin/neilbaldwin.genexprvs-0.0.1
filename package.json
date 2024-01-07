@@ -1,0 +1,53 @@
+{
+	"name": "genexprvs",
+	"displayName": "GenExpr",
+	"description": "GenExpr for Max",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"publisher": "neilbaldwin",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/neilbaldwin/neilbaldwin.genexprvs.git"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "genexpr",
+				"aliases": [
+					"GenExpr",
+					"genexpr"
+				],
+				"extensions": [
+					"genexpr",
+					"gendsp"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "genexpr",
+				"scopeName": "source.genexpr",
+				"path": "./syntaxes/genexpr.tmLanguage.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "genexpr",
+				"path": "./snippets/gen~.json"
+			},
+			{
+				"language": "genexpr",
+				"path": "./snippets/global.json"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1704651060995
+	}
+}
